@@ -5,7 +5,7 @@ FROM php:5-apache
 RUN groupadd --gid 1000 dcutil && \
     useradd --uid 1000 -ms /bin/bash dcutil -g dcutil
 
-# GD
+# GD and mcrypt
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -39,6 +39,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Add vendor bin to PATH
 ENV PATH="${HOME}/.composer/vendor/bin:vendor/bin:${PATH}"
+
+# add packages
+RUN apt-get update && apt-get install -y bash-completion git nano curl man
 
 # Set /var/www as working directory
 WORKDIR /var/www
