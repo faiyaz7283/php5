@@ -31,6 +31,12 @@ RUN apt-get update && apt-get install -y libmemcached-dev zlib1g-dev \
     && docker-php-ext-enable memcached \
     && rm -rf /var/lib/apt/lists/*
 
+ # Install apcu extension
+RUN apt-get update && apt-get install -y pecl install apcu-4.0.11 \
+     && docker-php-ext-enable apcu \
+     && rm -rf /var/lib/apt/lists/*
+
+
 # Install necessary extensions
 RUN docker-php-ext-install pdo_mysql mysqli opcache exif zip gettext
 
