@@ -49,5 +49,9 @@ RUN mkdir -p /usr/local/apache2/ssl
 # Set /var/www as working directory
 WORKDIR /var/www
 
+# turn on needed modules
+RUN a2enmod rewrite vhost_alias ssl headers expires socache_shmcb && \
+    service apache2 restart
+
 # Give ownership to www-data
 RUN chown -R www-data:www-data /var/www
