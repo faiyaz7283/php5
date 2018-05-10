@@ -44,7 +44,7 @@ ENV PATH="${HOME}/.composer/vendor/bin:vendor/bin:${PATH}"
 RUN apt-get update && apt-get install -y bash-completion git nano curl man
 
 # Create the SSL directory
-RUN mkdir -p /usr/local/apache2/ssl
+RUN mkdir -p /etc/apache2/ssl
 
 # Set /var/www as working directory
 WORKDIR /var/www
